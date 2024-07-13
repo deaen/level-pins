@@ -13,7 +13,6 @@ class $modify(LevelBrowserLayer) {
 
 		if (searchObj->m_searchType != SearchType::MyLevels || Mod::get()->getSavedValue<bool>("pending") == false)
 		{
-			log::error("not checkin");
 			LevelBrowserLayer::init(searchObj);
 			return true;
 		}
@@ -42,7 +41,6 @@ class $modify(LevelBrowserLayer) {
 			}
 		}
 		Mod::get()->setSavedValue<bool>("pending", false);
-
 		LevelBrowserLayer::init(searchObj);
 		return true;
 	}
