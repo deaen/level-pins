@@ -3,21 +3,12 @@ This is where she makes a mod.
 
 <img src="logo.png" width="150" alt="the mod's logo" />
 
-*Update logo.png to change your mod's icon (please)*
+a mod that allows you to pin multiple levels to the top of the created levels menu! 
+the button to pin a level is found in it's edit menu.
 
-## Getting started
-We recommend heading over to [the getting started section on our docs](https://docs.geode-sdk.org/getting-started/) for useful info on what to do next.
+thank you [squintted](https://x.com/squintted) for the initial idea!
+and Special thanks to cvolton for the [Editor Level ID API](https://github.com/Cvolton/level-id-api-geode) Dependency! you're a real one
 
-## Build instructions
-For more info, see [our docs](https://docs.geode-sdk.org/getting-started/create-mod#build)
-```sh
-# Assuming you have the Geode CLI set up already
-geode build
-```
+# Contact
+If the mod bugs out for you or anything contact me either on my discord (username: deaen) or more preferably open an issue in the [github repo](https://github.com/deaen/level-pins).
 
-# Resources
-* [Geode SDK Documentation](https://docs.geode-sdk.org/)
-* [Geode SDK Source Code](https://github.com/geode-sdk/geode/)
-* [Geode CLI](https://github.com/geode-sdk/cli)
-* [Bindings](https://github.com/geode-sdk/bindings/)
-* [Dev Tools](https://github.com/geode-sdk/DevTools)
