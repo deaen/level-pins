@@ -10,5 +10,5 @@ thank you [squintted](https://x.com/squintted) for the initial idea!
 and Special thanks to cvolton for the [Editor Level ID API](https://github.com/Cvolton/level-id-api-geode) Dependency! you're a real one
 
 # Contact
-If the mod bugs out for you or anything contact me either on my discord (username: deaen) or more preferably open an issue in the [github repo](https://github.com/deaen/level-pins).
+If the mod bugs out for you or anything contact me either on my discord (@deaen) or more preferably open an issue in the [github repo](https://github.com/deaen/level-pins).
 

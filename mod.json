@@ -22,5 +22,16 @@
 			"version": "v1.0.0",
 			"importance": "required"
 		}
-	]
+	],
+	"links": {
+		"source": "https://github.com/deaen/level-pins",
+		"homepage": "https://x.com/ddeaen"
+	},
+	"tags": [
+		"interface",
+		"offline",
+		"editor",
+		"utility"
+	],
+	"repository": "https://github.com/deaen/level-pins"
 }

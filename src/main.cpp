@@ -9,7 +9,8 @@ class $modify(LevelBrowserLayer) {
 	// I am extreme sorry for this, i cant think of a cleaner way to do this.........
 
 	bool init(GJSearchObject * searchObj) {
-		log::error("{}", Mod::get()->getSavedValue<bool>("pending"));
+		auto arr = LocalLevelManager::sharedState()->m_localLevels;
+
 		if (searchObj->m_searchType != SearchType::MyLevels || Mod::get()->getSavedValue<bool>("pending") == false)
 		{
 			log::error("not checkin");
@@ -17,7 +18,6 @@ class $modify(LevelBrowserLayer) {
 			return true;
 		}
 
-		auto arr = LocalLevelManager::sharedState()->m_localLevels;
 
 		for (int i = 0; i < arr->count() - 1; i++) {
 			auto level = typeinfo_cast<GJGameLevel*>(arr->objectAtIndex(i));
@@ -42,10 +42,17 @@ class $modify(LevelBrowserLayer) {
 			}
 		}
 		Mod::get()->setSavedValue<bool>("pending", false);
-		LevelBrowserLayer::init(searchObj);
 
+		LevelBrowserLayer::init(searchObj);
 		return true;
 	}
+
+	void onNew(CCObject* sender){
+		LevelBrowserLayer::onNew(sender);
+		log::debug("Hi");
+		Mod::get()->setSavedValue<bool>("pending", true);
+	}
+	
 };
 
 class $modify(PLEditLevelLayer, EditLevelLayer) {
