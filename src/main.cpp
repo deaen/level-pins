@@ -5,7 +5,7 @@
 #include <cvolton.level-id-api/include/EditorIDs.hpp>
 using namespace geode::prelude;
 
-class $modify(LevelBrowserLayer) {
+class $modify(LBLayer, LevelBrowserLayer) {
 	// I am extreme sorry for this, i cant think of a cleaner way to do this.........
 
 	bool init(GJSearchObject * searchObj) {
@@ -18,7 +18,7 @@ class $modify(LevelBrowserLayer) {
 		}
 
 
-		for (int i = 0; i < arr->count() - 1; i++) {
+		for (int i = 0; i < arr->count(); i++) {
 			auto level = typeinfo_cast<GJGameLevel*>(arr->objectAtIndex(i));
 			if (level == nullptr) continue;
 
@@ -27,8 +27,8 @@ class $modify(LevelBrowserLayer) {
 
 				auto prevLevel = typeinfo_cast<GJGameLevel*>(arr->objectAtIndex(i - 1));
 				if (Mod::get()->getSavedValue<bool>(std::to_string(EditorIDs::getID(prevLevel)))) continue;
-
-				for (int j = 0; j < arr->count() - 1; j++) {
+				
+				for (int j = 0; j < arr->count(); j++) {
 					auto level2 = typeinfo_cast<GJGameLevel*>(arr->objectAtIndex(j));
 					if (level2 == nullptr) continue;
 
@@ -40,17 +40,17 @@ class $modify(LevelBrowserLayer) {
 				}
 			}
 		}
+
 		Mod::get()->setSavedValue<bool>("pending", false);
 		LevelBrowserLayer::init(searchObj);
+
 		return true;
 	}
 
-	void onNew(CCObject* sender){
+	void onNew(CCObject * sender) {
 		LevelBrowserLayer::onNew(sender);
-		log::debug("Hi");
 		Mod::get()->setSavedValue<bool>("pending", true);
 	}
-	
 };
 
 class $modify(PLEditLevelLayer, EditLevelLayer) {
