@@ -6,7 +6,7 @@
 using namespace geode::prelude;
 
 class $modify(LBLayer, LevelBrowserLayer) {
-	// I am extreme sorry for this, i cant think of a cleaner way to do this.........
+	// I am extremely sorry for this, i cant think of a cleaner way to do this.........
 
 	bool init(GJSearchObject * searchObj) {
 		auto arr = LocalLevelManager::sharedState()->m_localLevels;

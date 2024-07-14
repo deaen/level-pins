@@ -21,7 +21,12 @@
 			"id": "cvolton.level-id-api",
 			"version": "v1.0.0",
 			"importance": "required"
-		}
+		},
+		{
+            "id": "geode.node-ids",
+            "version": "v1.13.1",
+            "importance": "required"
+        }
 	],
 	"links": {
 		"source": "https://github.com/deaen/level-pins",
