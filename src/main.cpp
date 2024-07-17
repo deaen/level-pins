@@ -10,7 +10,6 @@ class $modify(LBLayer, LevelBrowserLayer) {
 
 	bool init(GJSearchObject * searchObj) {
 		auto arr = LocalLevelManager::sharedState()->m_localLevels;
-
 		if (searchObj->m_searchType != SearchType::MyLevels || Mod::get()->getSavedValue<bool>("pending") == false)
 		{
 			LevelBrowserLayer::init(searchObj);
@@ -27,7 +26,7 @@ class $modify(LBLayer, LevelBrowserLayer) {
 
 				auto prevLevel = typeinfo_cast<GJGameLevel*>(arr->objectAtIndex(i - 1));
 				if (Mod::get()->getSavedValue<bool>(std::to_string(EditorIDs::getID(prevLevel)))) continue;
-				
+
 				for (int j = 0; j < arr->count(); j++) {
 					auto level2 = typeinfo_cast<GJGameLevel*>(arr->objectAtIndex(j));
 					if (level2 == nullptr) continue;
@@ -74,6 +73,11 @@ class $modify(PLEditLevelLayer, EditLevelLayer) {
 		return true;
 	}
 
+	void confirmClone(CCObject * sender) {
+		EditLevelLayer::confirmClone(sender);
+		Mod::get()->setSavedValue<bool>("pending", true);
+	}
+
 	void onPinToggle(CCObject * sender) {
 		if (auto button = typeinfo_cast<CCMenuItemToggler*>(sender)) {
 			if (button->isToggled() == true) {
@@ -87,6 +91,7 @@ class $modify(PLEditLevelLayer, EditLevelLayer) {
 		}
 
 	}
+
 };
 
 class $modify(LevelCell) {
