@@ -1,6 +1,4 @@
-# pinned_levels
-This is where she makes a mod.
-
+# level pins
 <img src="logo.png" width="150" alt="the mod's logo" />
 
 a mod that allows you to pin multiple levels to the top of the created levels menu! 
