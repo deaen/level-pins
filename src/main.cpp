@@ -1,5 +1,6 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/EditLevelLayer.hpp>
+#include <Geode/modify/LevelInfoLayer.hpp>
 #include <Geode/modify/LevelCell.hpp>
 #include <Geode/modify/LevelBrowserLayer.hpp>
 #include <cvolton.level-id-api/include/EditorIDs.hpp>
@@ -78,6 +79,11 @@ class $modify(PLEditLevelLayer, EditLevelLayer) {
 		Mod::get()->setSavedValue<bool>("pending", true);
 	}
 
+	void confirmMoveToTop(CCObject * sender) {
+		EditLevelLayer::confirmMoveToTop(sender);
+		Mod::get()->setSavedValue<bool>("pending", true);
+	}
+
 	void onPinToggle(CCObject * sender) {
 		if (auto button = typeinfo_cast<CCMenuItemToggler*>(sender)) {
 			if (button->isToggled() == true) {
@@ -92,6 +98,13 @@ class $modify(PLEditLevelLayer, EditLevelLayer) {
 
 	}
 
+};
+
+class $modify(LevelInfoLayer) {
+	void confirmClone(CCObject * sender) {
+		LevelInfoLayer::confirmClone(sender);
+		Mod::get()->setSavedValue<bool>("pending", true);
+	}
 };
 
 class $modify(LevelCell) {

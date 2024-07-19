@@ -6,7 +6,7 @@
 	},
 	"id": "deaen.level-pins",
 	"name": "Level Pinning",
-	"version": "v1.0.2",
+	"version": "v1.0.3",
 	"developer": "deaen",
 	"description": "Pin your levels to the top of the menu!",
 	"resources": {
