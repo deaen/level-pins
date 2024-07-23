@@ -1,55 +1,42 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/EditLevelLayer.hpp>
-#include <Geode/modify/LevelInfoLayer.hpp>
 #include <Geode/modify/LevelCell.hpp>
 #include <Geode/modify/LevelBrowserLayer.hpp>
 #include <cvolton.level-id-api/include/EditorIDs.hpp>
 using namespace geode::prelude;
 
 class $modify(LBLayer, LevelBrowserLayer) {
-	// I am extremely sorry for this, i cant think of a cleaner way to do this.........
-
 	bool init(GJSearchObject * searchObj) {
 		auto arr = LocalLevelManager::sharedState()->m_localLevels;
-		if (searchObj->m_searchType != SearchType::MyLevels || Mod::get()->getSavedValue<bool>("pending") == false)
-		{
-			LevelBrowserLayer::init(searchObj);
-			return true;
-		}
+		// i like to call this if statement "what the fuck"
+		if (searchObj->m_searchType == SearchType::MyLevels && (Mod::get()->getSavedValue<bool>("pending") || Mod::get()->getSavedValue<bool>(std::to_string(EditorIDs::getID(typeinfo_cast<GJGameLevel*>(arr->objectAtIndex(0))))) == false)) {
+			for (int i = 0; i < arr->count(); i++) {
+				auto level = typeinfo_cast<GJGameLevel*>(arr->objectAtIndex(i));
+				if (level == nullptr) continue;
 
+				if (Mod::get()->getSavedValue<bool>(std::to_string(EditorIDs::getID(level)))) {
+					if (i == 0) continue;
 
-		for (int i = 0; i < arr->count(); i++) {
-			auto level = typeinfo_cast<GJGameLevel*>(arr->objectAtIndex(i));
-			if (level == nullptr) continue;
+					auto prevLevel = typeinfo_cast<GJGameLevel*>(arr->objectAtIndex(i - 1));
+					if (Mod::get()->getSavedValue<bool>(std::to_string(EditorIDs::getID(prevLevel)))) continue;
 
-			if (Mod::get()->getSavedValue<bool>(std::to_string(EditorIDs::getID(level)))) {
-				if (i == 0) continue;
+					for (int j = 0; j < arr->count(); j++) {
+						auto level2 = typeinfo_cast<GJGameLevel*>(arr->objectAtIndex(j));
+						if (level2 == nullptr) continue;
 
-				auto prevLevel = typeinfo_cast<GJGameLevel*>(arr->objectAtIndex(i - 1));
-				if (Mod::get()->getSavedValue<bool>(std::to_string(EditorIDs::getID(prevLevel)))) continue;
-
-				for (int j = 0; j < arr->count(); j++) {
-					auto level2 = typeinfo_cast<GJGameLevel*>(arr->objectAtIndex(j));
-					if (level2 == nullptr) continue;
-
-					if (Mod::get()->getSavedValue<bool>(std::to_string(EditorIDs::getID(level2))) == false) {
-						arr->removeObject(level);
-						arr->insertObject(level, arr->indexOfObject(level2));
-						break;
+						if (Mod::get()->getSavedValue<bool>(std::to_string(EditorIDs::getID(level2))) == false) {
+							arr->removeObject(level);
+							arr->insertObject(level, arr->indexOfObject(level2));
+							break;
+						}
 					}
 				}
 			}
 		}
-
 		Mod::get()->setSavedValue<bool>("pending", false);
 		LevelBrowserLayer::init(searchObj);
 
 		return true;
-	}
-
-	void onNew(CCObject * sender) {
-		LevelBrowserLayer::onNew(sender);
-		Mod::get()->setSavedValue<bool>("pending", true);
 	}
 };
 
@@ -74,16 +61,6 @@ class $modify(PLEditLevelLayer, EditLevelLayer) {
 		return true;
 	}
 
-	void confirmClone(CCObject * sender) {
-		EditLevelLayer::confirmClone(sender);
-		Mod::get()->setSavedValue<bool>("pending", true);
-	}
-
-	void confirmMoveToTop(CCObject * sender) {
-		EditLevelLayer::confirmMoveToTop(sender);
-		Mod::get()->setSavedValue<bool>("pending", true);
-	}
-
 	void onPinToggle(CCObject * sender) {
 		if (auto button = typeinfo_cast<CCMenuItemToggler*>(sender)) {
 			if (button->isToggled() == true) {
@@ -98,13 +75,6 @@ class $modify(PLEditLevelLayer, EditLevelLayer) {
 
 	}
 
-};
-
-class $modify(LevelInfoLayer) {
-	void confirmClone(CCObject * sender) {
-		LevelInfoLayer::confirmClone(sender);
-		Mod::get()->setSavedValue<bool>("pending", true);
-	}
 };
 
 class $modify(LevelCell) {
