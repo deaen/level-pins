@@ -8,8 +8,7 @@ using namespace geode::prelude;
 class $modify(LBLayer, LevelBrowserLayer) {
 	bool init(GJSearchObject * searchObj) {
 		auto arr = LocalLevelManager::sharedState()->m_localLevels;
-		// i like to call this if statement "what the fuck"
-		if (searchObj->m_searchType == SearchType::MyLevels && (Mod::get()->getSavedValue<bool>("pending") || Mod::get()->getSavedValue<bool>(std::to_string(EditorIDs::getID(typeinfo_cast<GJGameLevel*>(arr->objectAtIndex(0))))) == false)) {
+		if (searchObj->m_searchType == SearchType::MyLevels && arr -> count() > 0 && (Mod::get()->getSavedValue<bool>("pending") || Mod::get()->getSavedValue<bool>(std::to_string(EditorIDs::getID(typeinfo_cast<GJGameLevel*>(arr->objectAtIndex(0))))) == false)) {
 			for (int i = 0; i < arr->count(); i++) {
 				auto level = typeinfo_cast<GJGameLevel*>(arr->objectAtIndex(i));
 				if (level == nullptr) continue;
@@ -33,6 +32,7 @@ class $modify(LBLayer, LevelBrowserLayer) {
 				}
 			}
 		}
+		
 		Mod::get()->setSavedValue<bool>("pending", false);
 		LevelBrowserLayer::init(searchObj);
 

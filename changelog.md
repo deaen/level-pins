@@ -1,3 +1,6 @@
+# 1.0.5
+- fixed crash when u have 0 levels lol
+
 # 1.0.4
 - mac supoort!
 - bug fixes!
