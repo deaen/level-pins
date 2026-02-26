@@ -1,8 +1,11 @@
+# 1.0.6
+- Ported to Geode v5.0 (+ a lil rewrite)
+
 # 1.0.5
-- fixed crash when u have 0 levels lol
+- fixed crash when u have 0 levels
 
 # 1.0.4
-- mac supoort!
+- mac support!
 - bug fixes!
 
 # 1.0.3

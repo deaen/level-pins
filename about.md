@@ -1,10 +1,13 @@
-# Level pins!
+# <c-00ff7f>Level Pins!</c>
 
-a mod that allows you to <cg>pin</c> any amount of levels to the top of the created levels menu!
-##### the button to pin a level is found in it's edit menu.
+A lil mod that allows you to **<cg>pin</c>** any amount of levels at the top of your created levels! 
 
-- thank you [squintted](https://x.com/squintted) for the idea!
-- and special thanks to cvolton for the [Editor Level ID API](https://github.com/Cvolton/level-id-api-geode) dependency!
+just click the <cr>toggle</c> in a level's menu to pin it!!
+##### pro tip: "move to top" also reorders ur pinned levels :D
+---
+## <cj>Contact</c>
+Please report issues on the GitHub, or just contact me on one of the socials on my website <cl>(discord/twitter prefered)</c>
 
-# Contact
-If the mod bugs out for you or anything contact me either on my discord <cj>(@deaen)</c> or <cr>more preferably</c> open an issue in the [github repo](https://github.com/deaen/level-pins/issues).
+---
+## <cy>Credits</c>
+Special thanks to [Cvolton](<user:761691>) for the Editor Level ID API **&** to [squintted](https://x.com/squintted) for the mod idea!!!

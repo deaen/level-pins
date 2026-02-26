@@ -1,40 +1,39 @@
 {
-	"geode": "3.4.0",
+	"geode": "5.0.1",
 	"gd": {
-		"win": "2.206",
-		"android": "2.206",
-		"mac": "2.206"
+		"win": "2.2081",
+		"android": "2.2081",
+		"mac": "2.2081",
+		"ios": "2.2081"
 	},
 	"id": "deaen.level-pins",
-	"name": "Level Pinning",
-	"version": "v1.0.5",
+	"name": "Level Pins",
+	"version": "v1.0.6",
 	"developer": "deaen",
 	"description": "Pin your levels to the top of the menu!",
 	"resources": {
 		"sprites": [
-			"resources/*.png"
+			"resources/pinOn.png",
+			"resources/pinOff.png"
 		]
 	},
-	"dependencies": [
-		{
-			"id": "cvolton.level-id-api",
-			"version": "v1.0.0",
-			"importance": "required"
+	"dependencies": {
+		"geode.node-ids": {
+			"version": ">=v1.20.0",
+			"required": true
 		},
-		{
-            "id": "geode.node-ids",
-            "version": "v1.13.1",
-            "importance": "required"
-        }
-	],
+		"cvolton.level-id-api": {
+			"version": ">=v2.0.0",
+			"required": true
+		}
+	},
 	"links": {
 		"source": "https://github.com/deaen/level-pins",
-		"homepage": "https://x.com/ddeaen"
+		"homepage": "https://deaen.github.io"
 	},
 	"tags": [
 		"interface",
 		"offline",
 		"utility"
-	],
-	"repository": "https://github.com/deaen/level-pins"
+	]
 }
