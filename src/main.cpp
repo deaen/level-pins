@@ -87,7 +87,7 @@ class $modify(LevelCell)
 				layer->addChild(pinSpr);
 
 				if (auto name = static_cast<CCLabelBMFont *>(layer->getChildByID("level-name")))
-					name->setColor({255, 200, 202});
+					name->setColor(Mod::get()->getSettingValue<cocos2d::ccColor3B>("name-color"));
 			}
 		}
 	}

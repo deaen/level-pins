@@ -35,5 +35,13 @@
 		"interface",
 		"offline",
 		"utility"
-	]
+	],
+	"settings": {
+		"name-color": {
+			"type": "rgb",
+			"name": "Pinned level names color",
+			"description": "set the color of pinned level names to whatever you want :0",
+			"default": [255, 200, 202]
+		}
+	}
 }

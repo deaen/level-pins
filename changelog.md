@@ -1,5 +1,7 @@
 # 1.0.6
-- Ported to Geode v5.0 (+ a lil rewrite)
+- added option to change the pinned level names color!
+- also did a lil rewrite
+- and ported to Geode v5.0
 
 # 1.0.5
 - fixed crash when u have 0 levels
